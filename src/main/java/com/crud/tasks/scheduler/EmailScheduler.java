@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 @RequiredArgsConstructor
 public class EmailScheduler {
@@ -20,11 +22,17 @@ public class EmailScheduler {
     @Scheduled(cron = "0 0 10 * * *")
     public void sendInformationEmail() {
         long size = taskRepository.count();
+        String tasksQuantity;
+        if (size == 1) {
+            tasksQuantity = size + " task";
+        } else {
+            tasksQuantity = size + " tasks";
+        }
         simpleEmailService.send(
                 Mail.builder()
                         .mailTo(adminConfig.getAdminMail())
                         .subject(SUBJECT)
-                        .message("Currently in database you got: " + size + " tasks")
+                        .message("Currently in database you got: " + tasksQuantity)
                         .build()
         );
     }
