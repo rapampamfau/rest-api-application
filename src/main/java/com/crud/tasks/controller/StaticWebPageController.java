@@ -17,6 +17,6 @@ public class StaticWebPageController {
         model.put("add", "+");
         model.put("subtract", "-");
         model.put("equals", "=");
-        return "index";
+        return "indexExercise";
     }
 }
