@@ -106,7 +106,7 @@ class TrelloFacadeTest {
         //Given
         TrelloCardDto trelloCardDto = new TrelloCardDto("name", "description", "1", "1");
         TrelloCard mappedTrelloCard = new TrelloCard("name", "description", "1", "1");
-        CreatedTrelloCardDto cardDto = new CreatedTrelloCardDto("1", "name", "url", new BadgesDto());
+        CreatedTrelloCardDto cardDto = new CreatedTrelloCardDto("1", "name", "url");
 
         when(trelloMapper.mapToCard(trelloCardDto)).thenReturn(mappedTrelloCard);
         doNothing().when(trelloValidator).validateCard(mappedTrelloCard);

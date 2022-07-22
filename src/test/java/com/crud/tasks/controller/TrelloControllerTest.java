@@ -16,7 +16,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -74,7 +73,7 @@ class TrelloControllerTest {
                 new TrelloCardDto("Test", "Test description", "top", "1");
 
         CreatedTrelloCardDto createdTrelloCardDto =
-                new CreatedTrelloCardDto("232", "Test", "http://test.com", new BadgesDto());
+                new CreatedTrelloCardDto("232", "Test", "http://test.com");
 
         when(trelloFacade.createCard(any(TrelloCardDto.class))).thenReturn(createdTrelloCardDto);
         Gson gson = new Gson();
